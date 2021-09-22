@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% block scripts %}
+    <style>
+        body {
+            /* background-color: #bda5eb; */
+            background-color: #FFFFFF;
+        }
+
+        .wrap {
+            width: 680px;
+            margin: 10px auto;
+        }
+
+        .title {
+            text-align: center;
+            color: aliceblue;
+        }
+    </style>
+    <script>
+
+    function postContent() {
+        let content = $("#my-content").val()
+        let author = `{{g.user.user_id}}`
+        var formData = new FormData();
+        var temp = $("#input-image")[0].files[0];
+        formData.append('input-image', temp);
+        formData.append('content', content);
+        formData.append('author', author);
+
+        $.ajax({
+            type: 'POST',
+            url: '/post',
+            data: formData,
+            contentType: false, // 해당 타입을 true로 하면 일반 text
+            cache: false,
+            processData: false, // 데이터 객체를 문자열로 바꿀지에 대한 값, true면 일반문자
+            async: false,       // 비동기 여부
+            success: function (res) {
+                let result = res['result']
+                if (result == "success") {
+                    window.location.reload()
+                } else {
+                    alert("저장오류!")
+                }
+            }
+        })
+    }
+    function postLike(id) {
+        $.ajax({
+            url:'/like',
+            type:'patch',
+            data:{
+                'id':id
+            },
+            success:function(res){
+                let result = res['result']
+                if(result == 'success'){
+                    window.location.reload()
+                }else{
+                    alert("저장오류")
+                }
+            }
+        })
+    }
+
+    function deletePost(id) {
+        let author = `{{g.user.user_id}}`
+        $.ajax({
+            url: '/post',
+            type: 'DELETE',
+            data: {
+                'id': id,
+                'author': author
+            },
+            success: function (res) {
+                if (res['result'] == 'success') {
+                    alert("삭제 성공!")
+                    window.location.href = '/post'
+                } else {
+                    alert("삭제 실패!")
+                }
+            }
+        })
+    }
+    function postUpdatePost(id) {
+        let content = $(`#userEidContent${id}`).val()
+        $.ajax({
+            url: '/post',
+            type: 'PATCH',
+            data: {
+                "id": id,
+                "content": content
+            },
+            success: function (res) {
+                if (res['result'] == 'success') {
+                    alert("수정성공")
+                    window.location.href = '/post'
+                }
+            }
+        })
+    }
+    function updatePost(id) {
+    let content = $(`#userContent${id}`).text()
+    let tmpHtml = `<textarea id=userEidContent${id} class="form-control" rows="3"></textarea>`
+    let tmpBtn = `<button class="btn btn-sm btn-success" onclick="postUpdatePost(${id})">수정완료</button>`
+    $("#edit-area").empty()
+    $("#edit-area").append(tmpHtml)
+    $(`#editBtn${id}`).hide()
+    $(`#userEidContent${id}`).val(content)
+    $("#edit-area").append(tmpBtn)
+    }
+
+    function setThumbnail(event) {
+        var reader = new FileReader();
+        console.log("reader", reader)
+        reader.onload = function(event) {
+            var img = document.createElement("img");
+        img.setAttribute("src", event.target.result);
+        document.querySelector("div#image_container").appendChild(img);
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    </script>
+{% endblock %}
+
+
+{% block content %}
+<div class="wrap">
+    <h2 class="title">SEOCHOFLOWER 타임라인</h2>
+    <hr>
+    <div class="card">
+        <h5 class="card-header">새 글 작성</h5>
+        <div class="card-body">
+                <div id="image_container">
+
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">{{g.user.user_id}}님, 글을 작성하세요</label>
+                    <textarea id='my-content' class="form-control" rows="3"></textarea>
+                </div>
+                <button class="btn btn-primary" onclick="postContent()">작성하기</button>
+                <input type="file" id="input-image" accept="image/*" onchange="setThumbnail(event);"/>
+        </div>
+    </div>
+    <hr>
+    {% for post in post_list %}
+    <div class="card mt-2">
+        <div class="card-body">
+            <div class="mb-3">
+                <label class="form-label">{{post.author}}</label>
+                <div id='edit-area'>
+                    <img src="/static/img/{{post.imagename}}"/>
+                <p id='userContent{{post.id}}'>{{post.content}}</p>
+                </div>
+            </div>
+            {{post.created_at}}
+        </div>
+        {% if post.author == g.user.user_id %}
+        <div class="card-footer text-muted">
+            <button class="btn btn-sm btn-warning" onclick="deletePost('{{post.id}}')">삭제하기</button>
+            <button id='editBtn{{post.id}}' class="btn btn-sm btn-success" onclick="updatePost('{{post.id}}')">수정하기</button>
+        </div>
+        {% else %}
+        <div class="card-footer text-muted">
+            <span>좋아요 {{post.likeit}} 개</span>
+            <button class="btn btn-sm btn-success" onclick="postLike('{{post.id}}')">좋아요</button>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+

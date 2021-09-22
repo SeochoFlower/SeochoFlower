@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% block scripts %}
+<script>
+        // 꽃말 띄우기
+        function flowerLanguage(){
+            $("#flower-language").empty();
+            if ($("#fl_item2 option:selected").val() == "카네이션"){
+                if($("#fl_type2 option:selected").val() == "핑크"){
+                    $("#flower-language").append(`<div>분홍색 카네이션의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>열애</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+                else if($("#fl_type2 option:selected").val() == "레드"){
+                    $("#flower-language").append(`<div>붉은색 카네이션의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>건강</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+            }
+            else if($("#fl_item2 option:selected").val() == "국화"){
+                if($("#fl_type2 option:selected").val() == "코스모스"){
+                    $("#flower-language").append(`<div>코스모스의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>소녀의 순결, 순정</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+                else if($("#fl_type2 option:selected").val() == "백선"){
+                    $("#flower-language").append(`<div>흰색 백선 국화의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>성실과 진실, 감사, 잊을 수 없는 사람</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+                else if($("#fl_type2 option:selected").val() == "디스버드"){
+                    $("#flower-language").append(`<div>디스버드 국화의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>진실, 감사</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+            }
+            else if($("#fl_item2 option:selected").val() == "용담"){
+                if($("#fl_type2 option:selected").val() == "용담"){
+                    $("#flower-language").append(`<div>용담의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>슬픈 그대가 좋아</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+            }
+            else if($("#fl_item2 option:selected").val() == "거베라"){
+                if($("#fl_type2 option:selected").val() == "거베라"){
+                    $("#flower-language").append(`<div>거베라의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>신비, 풀 수 없는 수수께끼</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+            }
+            else if($("#fl_item2 option:selected").val() == "데이지"){
+                if($("#fl_type2 option:selected").val() == "데이지"){
+                    $("#flower-language").append(`<div>데이지의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>겸손과 아름다움, 천진난만함</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+                else if($("#fl_type2 option:selected").val() == "겹"){
+                    $("#flower-language").append(`<div>겹샤스타데이지의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>만사는 인내로부터, 순진, 평화</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+            }
+            else if($("#fl_item2 option:selected").val() == "안개"){
+                if($("#fl_type2 option:selected").val() == "오버타임"){
+                    $("#flower-language").append(`<div>오버타임 안개꽃의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>맑은 마음, 사랑의 성공</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+            }
+            else if($("#fl_item2 option:selected").val() == "수국"){
+                if($("#fl_type2 option:selected").val() == "그린"){
+                    $("#flower-language").append(`<div>녹색 수국의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>변덕, 변심</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+                else if($("#fl_type2 option:selected").val() == "핑크"){
+                    $("#flower-language").append(`<div>분홍색 수국의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>소녀의 꿈</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+            }
+            else if($("#fl_item2 option:selected").val() == "백합"){
+                if($("#fl_type2 option:selected").val() == "메두사"){
+                    $("#flower-language").append(`<div>메두사 백합의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>낭만적인 핑크빛 사랑</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+                else if($("#fl_type2 option:selected").val() == "시베리아"){
+                    $("#flower-language").append(`<div>시베리아 백합의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>순결, 순수한 사랑, 깨끗한 사랑</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+            }
+            else if($("#fl_item2 option:selected").val() == "튜립"){
+                if($("#fl_type2 option:selected").val() == "레드"){
+                    $("#flower-language").append(`<div>붉은색 튤립의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>사랑의 고백</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+                else if($("#fl_type2 option:selected").val() == "로얄버진"){
+                    $("#flower-language").append(`<div>흰색 로얄버진 튤립의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>실연, 용서, 사과</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+            }
+            else if($("#fl_item2 option:selected").val() == "장미"){
+                if($("#fl_type2 option:selected").val() == "푸에고"){
+                    $("#flower-language").append(`<div>붉은색 푸에고 장미의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>사랑, 아름다움, 낭만적인 사랑, 용기, 존경, 열망, 열정</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+                else if($("#fl_type2 option:selected").val() == "하젤"){
+                    $("#flower-language").append(`<div>복숭아색 하젤 장미의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>열망</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+            }
+            else if($("#fl_item2 option:selected").val() == "해바라기"){
+                if($("#fl_type2 option:selected").val() == "해바라기"){
+                    $("#flower-language").append(`<div>해바라기의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>애모(愛募), 동경, 숭배, 기다림, 자부심, 자존심,당신만을 바라봅니다.</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+                else if($("#fl_type2 option:selected").val() == "겹"){
+                    $("#flower-language").append(`<div>겹해바라기의 꽃말은</div>`)
+                    $("#flower-language").append(`<div>당신만을 바라봅니다</div>`)
+                    $("#flower-language").append(`<div>입니다.</div>`)
+                }
+            }
+        }
+        function typeSelect2(){
+            $("#fl_type2").empty();
+            $("#fl_type2").append('<option value="none">=== 품종 ===</option>')
+            if ($("#fl_item2 option:selected").val() == "카네이션"){
+                $("#fl_type2").append('<option value="핑크">핑크</option>')
+                $("#fl_type2").append('<option value="레드">레드</option>')
+            }
+            else if($("#fl_item2 option:selected").val() == "국화"){
+                $("#fl_type2").append('<option value="코스모스">코스모스</option>')
+                $("#fl_type2").append('<option value="백선">백선</option>')
+                $("#fl_type2").append('<option value="디스버드">디스버드</option>')
+            }
+            else if($("#fl_item2 option:selected").val() == "용담"){
+                $("#fl_type2").append('<option value="용담">용담</option>')
+            }
+            else if($("#fl_item2 option:selected").val() == "거베라"){
+                $("#fl_type2").append('<option value="거베라">거베라</option>')
+            }
+            else if($("#fl_item2 option:selected").val() == "데이지"){
+                $("#fl_type2").append('<option value="데이지">데이지</option>')
+                $("#fl_type2").append('<option value="겹">겹</option>')
+            }
+            else if($("#fl_item2 option:selected").val() == "안개"){
+                $("#fl_type2").append('<option value="오버타임">오버타임</option>')
+            }
+            else if($("#fl_item2 option:selected").val() == "수국"){
+                $("#fl_type2").append('<option value="그린">그린</option>')
+                $("#fl_type2").append('<option value="핑크">핑크</option>')
+            }
+            else if($("#fl_item2 option:selected").val() == "백합"){
+                $("#fl_type2").append('<option value="메두사">메두사</option>')
+                $("#fl_type2").append('<option value="시베리아">시베리아</option>')
+            }
+            else if($("#fl_item2 option:selected").val() == "튜립"){
+                $("#fl_type2").append('<option value="레드">레드</option>')
+                $("#fl_type2").append('<option value="로얄버진">로얄버진</option>')
+            }
+            else if($("#fl_item2 option:selected").val() == "장미"){
+                $("#fl_type2").append('<option value="푸에고">푸에고</option>')
+                $("#fl_type2").append('<option value="하젤">하젤</option>')
+            }
+            else if($("#fl_item2 option:selected").val() == "해바라기"){
+                $("#fl_type2").append('<option value="해바라기">해바라기</option>')
+                $("#fl_type2").append('<option value="겹">겹</option>')
+            }
+        }
+
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="wrap">
+    <h4>우리들 꽃말이야기</h4>
+    <dd>
+        <form>
+            <h6>원하시는 꽃을 골라주세요.</h6>
+            <select name="fl_item2" id="fl_item2" onchange="typeSelect2()">
+                <option value="none">=== 품목 ===</option>
+                <option value="카네이션">카네이션</option>
+                <option value="국화">국화</option>
+                <option value="용담">용담</option>
+                <option value="거베라">거베라</option>
+                <option value="데이지">데이지</option>
+                <option value="안개">안개</option>
+                <option value="수국">수국</option>
+                <option value="백합">백합</option>
+                <option value="튜립">튜립</option>
+                <option value="장미">장미</option>
+                <option value="해바라기">해바라기</option>
+            </select>
+            <select name="fl_type2" id="fl_type2" onchange="flowerLanguage()">
+                <option value="none">=== 품종 ===</option>
+            </select>
+        </form>
+        <div id="flower-language">
+        </div>
+    </dd>
+</div>
+{% endblock %}
