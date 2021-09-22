@@ -1,5 +1,7 @@
 # SeochoFlower
 
-plus /datasets/images/train
-plus /datasets/images/val
-plus /ml
+plus /datasets/images/train<br>
+plus /datasets/images/val<br>
+plus /ml<br>
+plus /labels<br>
+
