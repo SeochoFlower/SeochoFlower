@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- chart.js -->
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+
+    <!-- 부트스트랩 import -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.bundle.min.js" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- jQuery를 import -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery(".navbar-toggler").click(function() {
+
+        // slideToggle은 요소의 hight 값을 조작해서 움직임을 만들어 낸다.
+        // 보이면 안보이게, 안보이면 보이게 처리한다.
+            jQuery(".navbar-nav").slideToggle();
+            });
+        });
+</script>
+    <title>Title</title>
+    <style>
+    .file_input_div {
+            position:relative;
+            width:80px;
+            height:36px;
+            overflow:hidden;
+        }
+        .file_input_img_btn {
+            padding:0 0 0 5px;
+        }
+        .file_input_hidden {
+            font-size:29px;
+            position:absolute;
+            right:0px;
+            top:0px;
+            opacity:0;
+            filter: alpha(opacity=0);
+            -ms-filter: alpha(opacity=0);
+            cursor:pointer;
+        }
+        .hide{
+        display: none;
+        }
+        .hidden{
+        display: none;
+        }
+        .wrap{
+            width: 680px;
+            margin: 10px  auto;
+        }
+        .title{
+            text-align: center;
+        }
+        @media(max-width:767px) {
+
+            .navbar-toggler span {
+                display:inline-block;
+                text-indent:-999px;
+            }
+            .navbar-nav {
+                display:none;
+            }
+        }
+        .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gird-gap: 1em;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    .location-listing {
+        position: relative;
+        overflow: hidden;
+    }
+
+
+
+    .location-image {
+        fliter: blur(0px);
+        transition: filter 0.3s ease-in;
+        transform: scale(1.1);
+    }
+
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 1em;
+    }
+    #left-side-bar {
+            background-color: #dfdfdf;
+            height: 100%;
+            width: 180px;
+            position: fixed;
+            left: 0px;
+            transition: left .3s;
+        }
+
+
+
+    </style>
+    {%block styles%}
+    {% endblock %}
+    {% block scripts %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="wrap">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">SECHOFLOWER</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                    <div class="navbar-collapse collapse show" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                        {% if not session['login'] %}
+                        <a class="nav-link" href="/login">로그인</a>
+                        <a class="nav-link" href="/join">회원가입</a>
+                        <a class="nav-link" href="/map">오시는 길</a>
+                        <a class="nav-link" href="/mean">꽃말이야기</a>
+
+                        {% else %}
+                        <a class="nav-link" href="/post">마이페이지</a>
+                        <a class="nav-link" href="/logout">로그아웃</a>
+                        <a class="nav-link" href="/map">오시는 길</a>
+                        <a class="nav-link" href="/mean">꽃말이야기</a>
+
+                        {% endif %}
+                        </div>
+                    </div>
+            </div>
+        </nav>
+        <hr>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+<script>
+</script>
+</html>
