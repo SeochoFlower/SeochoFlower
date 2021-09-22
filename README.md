@@ -1,10 +1,10 @@
 # SeochoFlower
 
-### plus folder
-plus /datasets/images/train<br>
-plus /datasets/images/val<br>
-plus /ml<br>
-plus /labels<br>
+### add folder
+add /datasets/images/train<br>
+add /datasets/images/val<br>
+add /ml<br>
+add /labels<br>
 
 ### table query
 create table realtime_flower(
