@@ -1,5 +1,6 @@
 # SeochoFlower
 
+### plus folder
 plus /datasets/images/train<br>
 plus /datasets/images/val<br>
 plus /ml<br>
